@@ -12,6 +12,7 @@
 </head>
 
 <body>
+ 
   <h2 class="heading">
     Clock
   </h2>
@@ -38,7 +39,7 @@
         <span class="sc_1" id="seconds">00</span>
         <span></span>
         
-      <span class="session" id ="session">PM</span>
+      <span class="session" id ="session">AM</span>
     </div>
   </div>
   <div>
@@ -47,10 +48,10 @@
        Date
       </h2>
       <div class = "Date">
-      <span class="date_number" id = "date_number"></span>
-      <div class = "month" id = "Month"></div>
-      <span>,</span>
-      <span class = "year" id = "year"></span>
+        <span class="date_number" id = "date_number">00</span>
+        <span class = "month" id = "month">00</span>
+        <span>,</span>
+        <span class = "year" id = "year">00</span>
     </div>
     </div>
   </div>
@@ -68,62 +69,57 @@
 
   <script type="text/javascript">
     const deg = 6;
-    // getting all hands of clock from html through id
-    const hr = document.querySelector('#hr')
-    const mn = document.querySelector('#mn');
-    const sc = document.querySelector('#sc');
+  // getting all hands of clock from html through id
+  const hr = document.querySelector('#hr')
+  const mn = document.querySelector('#mn');
+  const sc = document.querySelector('#sc');
 
-    setInterval(() => {
-      let day = new Date();
+  setInterval(() => {
+    let day = new Date();
 
-      //setting the actual seconds minutes and hour in clock
+    //setting the actual seconds minutes and hour in clock
 
-      let ms = day.getMilliseconds() * deg;
-      let hh = day.getHours() * 30;
-      let mm = day.getMinutes() * deg;
-      let ss = day.getSeconds() * deg + ms / 1000;
+    let ms = day.getMilliseconds() * deg;
+    let hh = day.getHours() * 30;
+    let mm = day.getMinutes() * deg;
+    let ss = day.getSeconds() * deg + ms / 1000;
 
-      //changing the degrees in the style as per the time
+    //changing the degrees in the style as per the time
 
-      hr.style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
-      mn.style.transform = `rotateZ(${mm}deg)`;
-      sc.style.transform = `rotateZ(${ss}deg)`;
+    hr.style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
+    mn.style.transform = `rotateZ(${mm}deg)`;
+    sc.style.transform = `rotateZ(${ss}deg)`;
 
-    }, 1);
+  }, 1);
 
-    function displayTime(){
-      var dateTime = new Date();
-      var hrs = dateTime.getHours();
-      var min = dateTime.getMinutes();
-      var sec = dateTime.getSeconds();
-      //var mili= dateTime.getMilliseconds();
-      var session = document.getElementById('session');
-      
-      if(hrs >= 12){
-        session.innterHTML = 'PM';
-      }
-      else{
-        session.innerHTML = 'AM';
-      }
-
-      document.getElementById('hours').innerHTML = hrs;
-      document.getElementById('minutes').innerHTML = min;
-      document.getElementById('seconds').innerHTML = sec;
-      document.getElementById('milliseconds').innerHTML = mili;
-    }
-    setInterval(displayTime, 10);
+  function displayTime(){
+    var dateTime = new Date();
+    var hrs = dateTime.getHours();
+    var min = dateTime.getMinutes();
+    var sec = dateTime.getSeconds();
+    //var mili= dateTime.getMilliseconds();
+    var session = document.getElementById('session');
     
-    function displayDate(){
-      var dateToday = new Date();
-      var date = dateToday.getDate();
-      var month = dateToday.getMonth();
-      var year = dateToday.getFullYear();
-      document.getElementById("date_number").innerText ="date";
-      document.getElementById('month').innerHTML =  month;
-      document.getElementById('year').innerHTML =  year;
+    if(hrs >= 12){
+      session.innterHTML = 'PM';
+    }
+    else{
+      session.innerHTML = 'AM';
     }
 
-  </script>
+    document.getElementById('hours').innerHTML = hrs;
+    document.getElementById('minutes').innerHTML = min;
+    document.getElementById('seconds').innerHTML = sec;
+    document.getElementById('milliseconds').innerHTML = mili;
+  }
+  setInterval(displayTime, 10);
+
+   var dateToday = new Date();
+    document.getElementById("date_number").innerText = dateToday.getDate();
+    document.getElementById("month").innerText =  dateToday.toLocaleString('default',{month:"long"});
+    document.getElementById("year").innerText =  dateToday.getFullYear();
+</script> 
+
 </body>
 
 </html>

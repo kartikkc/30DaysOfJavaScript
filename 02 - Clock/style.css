@@ -145,3 +145,19 @@ footer a:visited {
   transform : translate(-50%,-50%);
   font-size : 70px;
 }
+.Date_heading{
+   position: fixed;
+  color: #fff;
+  right: 0%;
+  left: 65%;
+}
+.Date{
+  font-family: Century Gothic;
+  color : white;
+  font-weight: bold;
+  position: absolute;
+  top : 58%;
+  left: 65%;
+  transform : translate(-50%,-50%);
+  font-size : 70px;
+}

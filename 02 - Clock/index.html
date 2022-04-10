@@ -41,6 +41,19 @@
       <span class="session" id ="session">PM</span>
     </div>
   </div>
+  <div>
+    <div>
+      <h2 class = "Date_heading">
+       Date
+      </h2>
+      <div class = "Date">
+      <span class="Date_number" id = "Date_number">00</span>
+      <span class = "Month" id = "Month">abc</span>
+      <span>,</span>
+      <span class = "year" id = "year">0000</span>
+    </div>
+    </div>
+  </div>
 
 
 
@@ -96,8 +109,17 @@
       document.getElementById('hours').innerHTML = hrs;
       document.getElementById('minutes').innerHTML = min;
       document.getElementById('seconds').innerHTML = sec;
+      document.getElementById('milliseconds').innerHTML = mili;
     }
     setInterval(displayTime, 10);
+    
+    function displayDate(){
+      const d = new Date();
+      document.getElementById("Date_number").innerHTML =  d.getDate();
+      document.getElementById('Month').innerHTML =  d.getMonth();
+      document.getElementById('year').innerHTML =  d.getFullYear();
+    }
+
   </script>
 </body>
 

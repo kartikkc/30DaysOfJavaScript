@@ -26,12 +26,27 @@
       <div class="sc" id="sc"></div>
     </div>
   </div>
+  <div>
+    <h2 class="heading_clock_2">
+      Digital Clock
+    </h2>
+    <div class="Digital">
+        <span class="hr_1" id="hours">00</span>
+        <span>:</span>
+        <span class="mn_1" id="minutes">00</span>
+        <span>:</span>
+        <span class="sc_1" id="seconds">00</span>
+        <span>:</span>
+        <span class = "ml_1" id = "milliseconds">00</span>
+      <span class="session" id ="session">PM</span>
+    </div>
+  </div>
 
 
 
   <footer>
     <p>&#x3c; &#47; &#x3e; with ❤️ by
-      <a href="https://swapnilsparsh.github.io/">Swapnil Srivastava</a>
+      <a href="https://kartikkc.github.io/">Kartik Singh</a>
       <br>
       <a href="https://github.com/swapnilsparsh/30DaysOfJavaScript" target="_blank">#30DaysOfJavaScript
       </a>
@@ -62,6 +77,27 @@
       sc.style.transform = `rotateZ(${ss}deg)`;
 
     }, 1);
+
+    function displayTime(){
+      var dateTime = new Date();
+      var hrs = dateTime.getHours();
+      var min = dateTime.getMinutes();
+      var sec = dateTime.getSeconds();
+      var mili= dateTime.getMilliseconds();
+      var session = document.getElementById('session');
+      
+      if(hrs >= 12){
+        session.innterHTML = 'PM';
+      }
+      else{
+        session.innerHTML = 'AM';
+      }
+
+      document.getElementById('hours').innerHTML = hrs;
+      document.getElementById('minutes').innerHTML = min;
+      document.getElementById('seconds').innerHTML = sec;
+    }
+    setInterval(displayTime, 10);
   </script>
 </body>
 
